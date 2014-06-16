@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import java.util.HashMap;
 
@@ -35,31 +35,12 @@ public class FunnyActivity extends FragmentActivity
         mTabHost.setup();
 
         mTabManager = new TabManager(this, mTabHost, R.id.realtabcontent);
-
-        Bundle bundle = new Bundle();
-        bundle.putInt("num", 1);
-        bundle.putInt("color", Color.WHITE);
-        mTabManager.addTab(mTabHost.newTabSpec("simple_1").setIndicator("SIMPLE_1"), TestFragment.class, bundle);
-
-        Bundle bundle_2 = new Bundle();
-        bundle_2.putInt("num", 2);
-        bundle_2.putInt("color", Color.BLUE);
-        mTabManager.addTab(mTabHost.newTabSpec("simple_2").setIndicator("SIMPLE_2"), TestFragment.class, bundle_2);
-
-        Bundle bundle_3 = new Bundle();
-        bundle_3.putInt("num", 3);
-        bundle_3.putInt("color", Color.CYAN);
-        mTabManager.addTab(mTabHost.newTabSpec("simple_3").setIndicator("SIMPLE_3"), TestFragment.class, bundle_3);
-
-        Bundle bundle_4 = new Bundle();
-        bundle_4.putInt("num", 4);
-        bundle_4.putInt("color", Color.DKGRAY);
-        mTabManager.addTab(mTabHost.newTabSpec("simple_4").setIndicator("SIMPLE_4"), TestFragment.class, bundle_4);
-
-        Bundle bundle_5 = new Bundle();
-        bundle_5.putInt("num", 5);
-        bundle_5.putInt("color", Color.GREEN);
-        mTabManager.addTab(mTabHost.newTabSpec("simple_5").setIndicator("SIMPLE_5"), TestFragment.class, bundle_5);
+        for (int x = 1; x <= 5; x++)
+        {
+            Bundle bundle = new Bundle();
+            bundle.putInt("num", x);
+            mTabManager.addTab(createIconTab(x), TestFragment.class, bundle);
+        }
 
         if (savedInstanceState != null)
         {
@@ -74,6 +55,49 @@ public class FunnyActivity extends FragmentActivity
 //                            TestFragment.class, null);
 //        mTabsAdapter.addTab(mTabHost.newTabSpec("simple2").setIndicator("Simple2"),
 //                            TestFragment.class, null);
+    }
+
+    private TabHost.TabSpec createIconTab(int position)
+    {
+        Bundle bundle = new Bundle();
+
+        View tab = getLayoutInflater().inflate(R.layout.tab_layout, null);
+
+        switch (position)
+        {
+            case 1:
+                bundle.putInt("num", 1);
+                bundle.putInt("color", Color.WHITE);
+                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_leaderboard_selector);
+                ((TextView) tab.findViewById(R.id.tab_text)).setText("Leaderboard");
+                return mTabHost.newTabSpec("simple_1").setIndicator(tab);
+            case 2:
+                bundle.putInt("num", 2);
+                bundle.putInt("color", Color.BLUE);
+                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_notification_selector);
+                ((TextView) tab.findViewById(R.id.tab_text)).setText("Notification");
+                return mTabHost.newTabSpec("simple_2").setIndicator(tab);
+            case 3:
+                bundle.putInt("num", 3);
+                bundle.putInt("color", Color.CYAN);
+                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_market_selector);
+                ((TextView) tab.findViewById(R.id.tab_text)).setText("Market");
+                return mTabHost.newTabSpec("simple_3").setIndicator(tab);
+            case 4:
+                bundle.putInt("num", 4);
+                bundle.putInt("color", Color.DKGRAY);
+                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_social_selector);
+                ((TextView) tab.findViewById(R.id.tab_text)).setText("Social");
+                return mTabHost.newTabSpec("simple_4").setIndicator(tab);
+            case 5:
+                bundle.putInt("num", 5);
+                bundle.putInt("color", Color.GREEN);
+                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_account_selector);
+                ((TextView) tab.findViewById(R.id.tab_text)).setText("Account");
+                return mTabHost.newTabSpec("simple_5").setIndicator(tab);
+        }
+
+        return mTabHost.newTabSpec("null").setIndicator(tab);
     }
 
     @Override
