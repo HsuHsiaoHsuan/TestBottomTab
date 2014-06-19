@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="font_tab">#B5B3B6</color>
+    <color name="font_selected_tab">#4EADE1</color>
+    <color name="background_tab">#FCFCFD</color>
+
+    <color name="background_list_header_market">#008EBD</color>
+
+    <color name="background_expandablelist_title">#FCFCFD</color>
+    <color name="background_expandablelist_content">#FFFFFF</color>
+</resources>

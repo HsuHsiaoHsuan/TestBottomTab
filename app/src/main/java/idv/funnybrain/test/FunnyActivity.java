@@ -21,83 +21,52 @@ public class FunnyActivity extends FragmentActivity
 
     TabHost mTabHost;
     TabManager mTabManager;
-//    ViewPager mViewPager;
-//    TabsAdapter mTabsAdapter;
+
+    private static final Class<?>[] frag_list = new Class<?>[]
+    {
+        TestFragment.class,    // Leaderboard
+        TestFragment.class,    // Notification
+        Fragment_Market.class, // Market
+        TestFragment.class,    // Social
+        TestFragment.class     // Account
+    };
+
+    private static final int[] tab_icon = new int[]
+    {
+        R.drawable.tab_leaderboard_selector,
+        R.drawable.tab_notification_selector,
+        R.drawable.tab_market_selector,
+        R.drawable.tab_social_selector,
+        R.drawable.tab_account_selector
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-//        setContentView(R.layout.fragment_tabs_pager);
         setContentView(R.layout.fragment_tabs);
         mTabHost = (TabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup();
 
         mTabManager = new TabManager(this, mTabHost, R.id.realtabcontent);
-        for (int x = 1; x <= 5; x++)
+        String[] tab_title = getResources().getStringArray(R.array.tabs_name);
+        for (int x = 0; x < tab_title.length; x++)
         {
             Bundle bundle = new Bundle();
-            bundle.putInt("num", x);
-            mTabManager.addTab(createIconTab(x), TestFragment.class, bundle);
+            bundle.putString("name", tab_title[x]);
+
+            View tab = getLayoutInflater().inflate(R.layout.tab_layout, null);
+            tab.findViewById(R.id.tab_icon).setBackgroundResource(tab_icon[x]);
+            ((TextView) tab.findViewById(R.id.tab_text)).setText(tab_title[x]);
+
+            mTabManager.addTab(mTabHost.newTabSpec(tab_title[x]).setIndicator(tab), frag_list[x], bundle);
         }
 
         if (savedInstanceState != null)
         {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
         }
-
-//        mViewPager = (ViewPager) findViewById(R.id.pager);
-
-//        mTabsAdapter = new TabsAdapter(this, mTabHost, mViewPager);
-//
-//        mTabsAdapter.addTab(mTabHost.newTabSpec("simple").setIndicator("Simple"),
-//                            TestFragment.class, null);
-//        mTabsAdapter.addTab(mTabHost.newTabSpec("simple2").setIndicator("Simple2"),
-//                            TestFragment.class, null);
-    }
-
-    private TabHost.TabSpec createIconTab(int position)
-    {
-        Bundle bundle = new Bundle();
-
-        View tab = getLayoutInflater().inflate(R.layout.tab_layout, null);
-
-        switch (position)
-        {
-            case 1:
-                bundle.putInt("num", 1);
-                bundle.putInt("color", Color.WHITE);
-                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_leaderboard_selector);
-                ((TextView) tab.findViewById(R.id.tab_text)).setText("Leaderboard");
-                return mTabHost.newTabSpec("simple_1").setIndicator(tab);
-            case 2:
-                bundle.putInt("num", 2);
-                bundle.putInt("color", Color.BLUE);
-                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_notification_selector);
-                ((TextView) tab.findViewById(R.id.tab_text)).setText("Notification");
-                return mTabHost.newTabSpec("simple_2").setIndicator(tab);
-            case 3:
-                bundle.putInt("num", 3);
-                bundle.putInt("color", Color.CYAN);
-                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_market_selector);
-                ((TextView) tab.findViewById(R.id.tab_text)).setText("Market");
-                return mTabHost.newTabSpec("simple_3").setIndicator(tab);
-            case 4:
-                bundle.putInt("num", 4);
-                bundle.putInt("color", Color.DKGRAY);
-                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_social_selector);
-                ((TextView) tab.findViewById(R.id.tab_text)).setText("Social");
-                return mTabHost.newTabSpec("simple_4").setIndicator(tab);
-            case 5:
-                bundle.putInt("num", 5);
-                bundle.putInt("color", Color.GREEN);
-                tab.findViewById(R.id.tab_icon).setBackgroundResource(R.drawable.tab_account_selector);
-                ((TextView) tab.findViewById(R.id.tab_text)).setText("Account");
-                return mTabHost.newTabSpec("simple_5").setIndicator(tab);
-        }
-
-        return mTabHost.newTabSpec("null").setIndicator(tab);
     }
 
     @Override
@@ -208,94 +177,4 @@ public class FunnyActivity extends FragmentActivity
             }
         }
     }
-
-    //    public static class TabsAdapter extends FragmentPagerAdapter
-//                                    implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
-//        private final Context mContext;
-//        private final TabHost mTabHost;
-//        private final ViewPager mViewPager;
-//        private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
-//
-//        static final class TabInfo {
-//            private final String tag;
-//            private final Class<?> clss;
-//            private final Bundle args;
-//
-//            TabInfo(String _tag, Class<?> _class, Bundle _args) {
-//                tag = _tag;
-//                clss = _class;
-//                args = _args;
-//            }
-//        }
-//
-//        static class DummyTabFactory implements TabHost.TabContentFactory {
-//            private final Context mContext;
-//
-//            private DummyTabFactory(Context context) {
-//                mContext = context;
-//            }
-//
-//            @Override
-//            public View createTabContent(String tag) {
-//                View v = new View(mContext);
-//                v.setMinimumWidth(0);
-//                v.setMinimumHeight(0);
-//                return v;
-//            }
-//        }
-//
-//        public TabsAdapter(FragmentActivity activity, TabHost tabHost, ViewPager pager) {
-//            super(activity.getSupportFragmentManager());
-//            mContext = activity;
-//            mTabHost = tabHost;
-//            mViewPager = pager;
-//            mTabHost.setOnTabChangedListener(this);
-//            mViewPager.setAdapter(this);
-//            mViewPager.setOnPageChangeListener(this);
-//        }
-//
-//        public void addTab(TabHost.TabSpec tabSpec, Class<?> clss, Bundle args) {
-//            tabSpec.setContent(new DummyTabFactory(mContext));
-//            String tag = tabSpec.getTag();
-//
-//            TabInfo info = new TabInfo(tag, clss, args);
-//            mTabs.add(info);
-//            mTabHost.addTab(tabSpec);
-//            notifyDataSetChanged();
-//        }
-//
-//        @Override
-//        public Fragment getItem(int position) {
-//            TabInfo info = mTabs.get(position);
-//            return Fragment.instantiate(mContext, info.clss.getName(), info.args);
-//        }
-//
-//        @Override
-//        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//        }
-//
-//        @Override
-//        public void onPageSelected(int position) {
-//            TabWidget widget = mTabHost.getTabWidget();
-//            int oldFocusability = widget.getDescendantFocusability();
-//            widget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
-//            mTabHost.setCurrentTab(position);
-//            widget.setDescendantFocusability(oldFocusability);
-//        }
-//
-//        @Override
-//        public void onPageScrollStateChanged(int state) {
-//        }
-//
-//        @Override
-//        public void onTabChanged(String tabId) {
-//            int position = mTabHost.getCurrentTab();
-//            mViewPager.setCurrentItem(position);
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return mTabs.size();
-//        }
-//    }
 }

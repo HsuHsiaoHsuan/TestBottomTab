@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/background_list_header_market">
+
+    <TextView
+        android:id="@+id/list_header_symbol"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/market_list_title_symbol"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/list_header_last"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/market_list_title_last"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/list_header_chg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/market_list_title_chg"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/list_header_chg_percentage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/market_list_title_chg_percentage"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+</LinearLayout>

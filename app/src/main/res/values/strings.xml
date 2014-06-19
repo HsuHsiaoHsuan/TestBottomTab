@@ -3,4 +3,36 @@
     <string name="tab_words">Tab Words</string>
     <string name="tab_numbers">Tab Numbers</string>
     <string name="hello_world">Hello World!</string>
+
+    <string-array name="tabs_name">
+        <item>Leaderboard</item>
+        <item>Notification</item>
+        <item>Market</item>
+        <item>Social</item>
+        <item>Account</item>
+    </string-array>
+    
+    <string name="market_list_title_symbol">Symbol</string>
+    <string name="market_list_title_last">Last</string>
+    <string name="market_list_title_chg">Chg</string>
+    <string name="market_list_title_chg_percentage">&#37;Chg</string>
+
+    <string-array name="market_list_title">
+        <item>Symbol</item>
+        <item>Last</item>
+        <item>Chg</item>
+        <item>&#37;Chg</item>
+    </string-array>
+
+    <string-array name="defalut_currency">
+        <item>EUR.USD</item>
+        <item>USD.JPY</item>
+        <item>EUR.JPY</item>
+        <item>USD.CHF</item>
+        <item>GBP.USD</item>
+        <item>AUD.USD</item>
+        <item>USD.CAD</item>
+        <item>NZD.USD</item>
+    </string-array>
+    
 </resources>

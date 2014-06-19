@@ -16,6 +16,7 @@ public class TestFragment extends Fragment
 {
     int mNum;
     int mColor;
+    String mName;
 
     static TestFragment newInstance(int num)
     {
@@ -34,6 +35,7 @@ public class TestFragment extends Fragment
         super.onCreate(savedInstanceState);
         mNum = getArguments() != null ? getArguments().getInt("num") : 1;
         mColor = getArguments() != null ? getArguments().getInt("color") : Color.BLACK;
+        mName = getArguments() != null ? getArguments().getString("name") : "no name";
     }
 
     @Override
@@ -41,7 +43,7 @@ public class TestFragment extends Fragment
     {
         View v = inflater.inflate(R.layout.hello_world, container, false);
         View tv = v.findViewById(R.id.text);
-        ((TextView)tv).setText("Fragment #" + mNum);
+        ((TextView)tv).setText("Fragment #" + mName);
         tv.setBackgroundColor(mColor);
         return v;
     }
