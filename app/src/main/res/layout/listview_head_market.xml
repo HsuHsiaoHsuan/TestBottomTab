@@ -14,7 +14,8 @@
         android:layout_weight="1"
         android:text="@string/market_list_title_symbol"
         android:textColor="@android:color/white"
-        android:textAppearance="?android:textAppearanceLarge"/>
+        android:textAppearance="?android:textAppearanceLarge"
+        android:tag="symbol"/>
 
     <TextView
         android:id="@+id/list_header_last"
@@ -23,16 +24,18 @@
         android:layout_weight="1"
         android:text="@string/market_list_title_last"
         android:textColor="@android:color/white"
-        android:textAppearance="?android:textAppearanceLarge"/>
+        android:textAppearance="?android:textAppearanceLarge"
+        android:tag="last"/>
 
     <TextView
-            android:id="@+id/list_header_chg"
+        android:id="@+id/list_header_chg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/market_list_title_chg"
         android:textColor="@android:color/white"
-        android:textAppearance="?android:textAppearanceLarge"/>
+        android:textAppearance="?android:textAppearanceLarge"
+        android:tag="chg"/>
 
     <TextView
         android:id="@+id/list_header_chg_percentage"
@@ -41,6 +44,7 @@
         android:layout_weight="1"
         android:text="@string/market_list_title_chg_percentage"
         android:textColor="@android:color/white"
-        android:textAppearance="?android:textAppearanceLarge"/>
+        android:textAppearance="?android:textAppearanceLarge"
+        android:tag="chg_percentage"/>
 
 </LinearLayout>

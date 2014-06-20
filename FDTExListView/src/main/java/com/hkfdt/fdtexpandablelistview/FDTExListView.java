@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
 import org.w3c.dom.Text;
@@ -13,14 +14,14 @@ import java.util.List;
 /**
  * Created by FDT-14014Mac on 2014/6/18.
  */
-public class FDTExpandableListView extends LinearLayout
+public class FDTExListView extends LinearLayout
 {
     private LinearLayout headerView;
     private ListView listView;
     private LayoutInflater inflater;
     private Context mContext;
 
-    public FDTExpandableListView(Context context)
+    public FDTExListView(Context context)
     {
         super(context);
         mContext = context;
@@ -28,7 +29,7 @@ public class FDTExpandableListView extends LinearLayout
         init(context);
     }
 
-    public FDTExpandableListView(Context context, AttributeSet attrs)
+    public FDTExListView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
         mContext = context;
@@ -59,13 +60,13 @@ public class FDTExpandableListView extends LinearLayout
         }
     }
 
+    public void setHeaderTitles(View view)
+    {
+        headerView.addView(view);
+    }
+
     public void addListView(ListView view)
     {
         addView(view);
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 }

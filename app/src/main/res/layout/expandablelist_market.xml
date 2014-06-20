@@ -7,16 +7,47 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/expandablelist_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/listview_item_height" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/list_title_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/list_title_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"/>
+
+        <TextView
+                android:id="@+id/list_title_sign"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"/>
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/expandablelist_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/expandablelist_content_height"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
