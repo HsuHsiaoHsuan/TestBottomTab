@@ -1,4 +1,4 @@
-package idv.funnybrain.test;
+package idv.funnybrain.test.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.actionbarsherlock.app.SherlockFragment;
+import idv.funnybrain.test.R;
 
 /**
  * Created by Freeman on 2014/6/8.

@@ -1,21 +1,22 @@
-package idv.funnybrain.test;
+package idv.funnybrain.test.adapter;
 
 import android.content.Context;
-import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.hkfdt.fdtexpandablelistview.FDTExListViewAdapter;
+import com.hkfdt.android.widget.FDTExListViewBaseAdapter;
+import idv.funnybrain.test.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by freeman on 2014/6/20.
  */
-public class MarketListAdapter extends FDTExListViewAdapter
+public class MarketListAdapter extends FDTExListViewBaseAdapter
 {
     private final Context mContext;
     private final LayoutInflater mLayoutInflater;
@@ -31,7 +32,8 @@ public class MarketListAdapter extends FDTExListViewAdapter
     }
 
     @Override
-    public int getCount() {
+    public int getCount()
+    {
         return mItems.size();
     }
 
@@ -40,13 +42,14 @@ public class MarketListAdapter extends FDTExListViewAdapter
         TextView name;
         TextView value;
         TextView sign;
+        List<View> views;
     }
 
     static List<Object> viewHolder_test;
 
     @Override
-    public View getTitleView(final int position, View convertView, ViewGroup parent) {
-
+    public View getTitleView(final int position, View convertView, ViewGroup parent)
+    {
         ViewHolder_title viewHolder;
 
         if (convertView == null)
@@ -56,6 +59,11 @@ public class MarketListAdapter extends FDTExListViewAdapter
             viewHolder.name = (TextView) convertView.findViewById(R.id.list_title_name);
             viewHolder.value = (TextView) convertView.findViewById(R.id.list_title_value);
             viewHolder.sign = (TextView) convertView.findViewById(R.id.list_title_sign);
+
+            viewHolder.views = new ArrayList<View>();
+
+            //viewHolder.views.add()
+            //for (View view: viewHolder.views)
 
 //            viewHolder.name.setOnTouchListener(new View.OnTouchListener() {
 //                CountDownTimer c;
@@ -107,16 +115,19 @@ public class MarketListAdapter extends FDTExListViewAdapter
 
             viewHolder.value.setOnTouchListener(new View.OnTouchListener() {
                 @Override
-                public boolean onTouch(View v, MotionEvent event) {
+                public boolean onTouch(View v, MotionEvent event)
+                {
                     String tmp = ((TextView) v).getText().toString();
                     Toast.makeText(mContext, "you click value " + tmp, Toast.LENGTH_SHORT).show();
                     return true;
                 }
             });
 
-            viewHolder.sign.setOnTouchListener(new View.OnTouchListener() {
+            viewHolder.sign.setOnTouchListener(new View.OnTouchListener()
+            {
                 @Override
-                public boolean onTouch(View v, MotionEvent event) {
+                public boolean onTouch(View v, MotionEvent event)
+                {
 
                     return false;
                 }
@@ -137,7 +148,8 @@ public class MarketListAdapter extends FDTExListViewAdapter
     }
 
     @Override
-    public View getContentView(int position, View convertView, ViewGroup parent) {
+    public View getContentView(int position, View convertView, ViewGroup parent)
+    {
         TextView tv = (TextView) convertView;
         if(tv == null)
         {
@@ -146,9 +158,11 @@ public class MarketListAdapter extends FDTExListViewAdapter
         tv.setTextSize(30.0f);
         tv.setText("content");
 
-        tv.setOnClickListener(new View.OnClickListener() {
+        tv.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Toast.makeText(mContext, "you click content", Toast.LENGTH_SHORT).show();
             }
         });

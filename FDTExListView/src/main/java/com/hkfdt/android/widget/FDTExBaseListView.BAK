@@ -1,27 +1,24 @@
-package com.hkfdt.fdtexpandablelistview;
+package com.hkfdt.android.widget;
 
 import android.content.Context;
-import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 /**
  * Created by FDT-14014Mac on 2014/6/18.
  */
-public class FDTExListView extends LinearLayout
+public class FDTExBaseListView extends LinearLayout
 {
     private LinearLayout headerView;
     private ListView listView;
     private LayoutInflater inflater;
     private Context mContext;
 
-    public FDTExListView(Context context)
+    public FDTExBaseListView(Context context)
     {
         super(context);
         mContext = context;
@@ -29,7 +26,7 @@ public class FDTExListView extends LinearLayout
         init(context);
     }
 
-    public FDTExListView(Context context, AttributeSet attrs)
+    public FDTExBaseListView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
         mContext = context;

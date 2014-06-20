@@ -1,7 +1,6 @@
 package idv.funnybrain.test;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -9,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TextView;
+import idv.funnybrain.test.ui.Fragment_Market;
+import idv.funnybrain.test.ui.TestFragment;
 
 import java.util.HashMap;
 
